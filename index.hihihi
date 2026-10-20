@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thế giới nhỏ của Lâm ♡</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --yellow: #fff0a8;
+  --purple: #e6d6ff;
+  --blue: #c9efff;
+  --green: #d8ffcb;
+  --pink: #ffd9ed;
+  --ink: #39336f;
+  --white: #fffdf8;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 5% 10%, #fff2b7, transparent 27%),
+    radial-gradient(circle at 95% 25%, #e7d8ff, transparent 28%),
+    #fffdf8;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 16px 7%;
+  background: #fffdf0eF;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid #eee2ff;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  color: #6550ca;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+nav a {
+  font-size: 14px;
+  font-weight: 900;
+  transition: .25s;
+}
+
+nav a:hover {
+  color: #f078b6;
+}
+
+.hero {
+  width: 90%;
+  max-width: 1200px;
+  margin: 28px auto;
+  padding: 40px;
+  min-height: 350px;
+  border-radius: 35px;
+  background: linear-gradient(125deg, #fff0a8, #c9efff, #e6d6ff, #d8ffcb);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 25px;
+  overflow: hidden;
+}
+
+.hero-text {
+  max-width: 570px;
+}
+
+.hello {
+  font-size: clamp(42px, 6vw, 70px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  font-weight: 900;
+  color: #6550ca;
+}
+
+.rainbow {
+  background: linear-gradient(90deg, #ff69b4, #ffb52e, #37bde9, #8a64e8, #4bc995);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.button {
+  display: inline-block;
+  background: white;
+  padding: 13px 23px;
+  border-radius: 30px;
+  margin-top: 10px;
+  color: #6550ca;
+  font-weight: 900;
+  box-shadow: 0 5px 0 #d7c6ff;
+  transition: .25s;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+}
+
+.pets {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.pets img {
+  width: 175px;
+  height: 215px;
+  object-fit: cover;
+  border: 7px solid white;
+  border-radius: 45% 45% 30% 30%;
+  box-shadow: 0 10px 25px #6d5ba626;
+  animation: bob 3s ease-in-out infinite;
+}
+
+.pets img:nth-child(2) {
+  animation-delay: .6s;
+}
+
+section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 38px auto;
+  scroll-margin-top: 95px;
+}
+
+.title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.title span {
+  color: #ed79b7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  padding: 25px;
+  border-radius: 28px;
+  border: 2px solid white;
+  box-shadow: 0 7px 24px #6d5ba512;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.yellow { background: linear-gradient(140deg, #fff4bd, #fffdf3); }
+.purple { background: linear-gradient(140deg, #ecdeff, #fff7ff); }
+.blue { background: linear-gradient(140deg, #d8f4ff, #f5fcff); }
+.green { background: linear-gradient(140deg, #ddffd4, #f8fff4); }
+.pink { background: linear-gradient(140deg, #ffdeef, #fff7fc); }
+
+.card h3 {
+  margin-top: 0;
+  font-size: 23px;
+}
+
+.card p {
+  line-height: 1.8;
+}
+
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 0 0 3px #dfcaff;
+}
+
+.tag {
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 4px;
+  border-radius: 20px;
+  background: #ffffffbf;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.hobby {
+  text-align: center;
+  padding: 20px 10px;
+  border: 2px solid white;
+  border-radius: 22px;
+  background: #ffffffb8;
+  transition: .3s;
+}
+
+.hobby:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  background: white;
+}
+
+.emoji {
+  display: block;
+  font-size: 37px;
+  margin-bottom: 8px;
+}
+
+.hobby b {
+  display: block;
+}
+
+.hobby small {
+  display: block;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.gallery img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 25px;
+  border: 5px solid white;
+  box-shadow: 0 5px 18px #8171a31c;
+  transition: .3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.035) rotate(1deg);
+}
+
+.quote {
+  text-align: center;
+  line-height: 1.9;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.contact-links a {
+  background: white;
+  padding: 11px 17px;
+  border-radius: 22px;
+  font-weight: 900;
+  transition: .2s;
+}
+
+.contact-links a:hover {
+  background: var(--yellow);
+  transform: translateY(-3px);
+}
+
+footer {
+  text-align: center;
+  margin-top: 45px;
+  padding: 38px 15px;
+  background: linear-gradient(100deg, #fff0a8, #d8ffcb, #c9efff, #e6d6ff);
+  font-weight: 800;
+  line-height: 2;
+}
+
+.paw-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+  width: 55px;
+  height: 55px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 4px 15px #0002;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.sparkle {
+  position: fixed;
+  z-index: 30;
+  pointer-events: none;
+  animation: rise 1.2s forwards;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-9px) rotate(2deg); }
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-70px) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  header {
+    flex-direction: column;
+    padding: 14px;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 18px;
+  }
+
+  .pets img {
+    width: 125px;
+    height: 155px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hobbies {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery img {
+    height: 160px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="logo" href="#home">🐱 Lâm's Little World ♡</a>
+  <nav>
+    <a href="#home">🏠 Trang chủ</a>
+    <a href="#about">🌷 Giới thiệu</a>
+    <a href="#hobbies">🎀 Sở thích</a>
+    <a href="#gallery">📸 Hình ảnh</a>
+    <a href="#contact">💌 Liên hệ</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="hero-text">
+      <h1 class="hello">Xin <span class="rainbow">chào!</span> ✨</h1>
+      <h2>Mình là Nguyễn Thùy Lâm ♡</h2>
+      <p>
+        Chào mừng bạn đến với thế giới nhỏ của mình! 🌈<br>
+        Một góc nhỏ đầy màu sắc, âm nhạc, mèo con
+        và những điều khiến cuộc sống vui hơn.
+      </p>
+      <a class="button" href="#about">Khám phá thế giới của Lâm ✨</a>
+    </div>
+
+    <div class="pets">
+      <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=85" alt="Mèo con">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=85" alt="Chó con">
+    </div>
+  </div>
+
+  <section id="about">
+    <h2 class="title">🌷 About <span>me</span> 🌷</h2>
+
+    <div class="grid">
+      <div class="card purple">
+        <div class="about-row">
+          <img class="avatar"
+            src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=400&q=85"
+            alt="Ảnh mèo đại diện">
+
+          <div>
+            <h3>💜 Đôi chút về mình</h3>
+            <p>👤 <b>Họ tên:</b> Nguyễn Thùy Lâm</p>
+            <p>🎂 <b>Ngày sinh:</b> 07.12.2011</p>
+            <p>🏫 <b>Trường:</b> THPT Phú Nhuận</p>
+            <p>📚 <b>Lớp:</b> 10A6</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card yellow">
+        <h3>🌟 Một chút về tính cách</h3>
+        <p>🌈 Thích những điều mới mẻ và sáng tạo.</p>
+        <p>🎧 Có thể nghe nhạc hàng giờ.</p>
+        <p>🐱 Không thể cưỡng lại những bé mèo dễ thương.</p>
+        <p>💗 Luôn muốn lưu giữ những kỷ niệm đẹp.</p>
+        <span class="tag">Creative ✨</span>
+        <span class="tag">Music lover 🎧</span>
+        <span class="tag">Cat lover 🐾</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies">
+    <h2 class="title">🎀 Sở thích của <span>mình</span> 🎀</h2>
+
+    <div class="card blue">
+      <div class="hobbies">
+        <div class="hobby">
+          <span class="emoji">🎧</span>
+          <b>Nghe nhạc</b>
+          <small>Pop, indie và những bài hát yêu thích.</small>
+        </div>
+
+        <div class="hobby">
+          <span class="emoji">🎮</span>
+          <b>Chơi game</b>
+          <small>Minecraft, Roblox và nhiều trò vui.</small>
+        </div>
+
+        <div class="hobby">
+          <span class="emoji">🐱</span>
+          <b>Mèo con</b>
+          <small>Những chiếc mèo đáng yêu.</small>
+        </div>
+
+        <div class="hobby">
+          <span class="emoji">🐶</span>
+          <b>Cún con</b>
+          <small>Những người bạn bốn chân.</small>
+        </div>
+
+        <div class="hobby">
+          <span class="emoji">🎹</span>
+          <b>Âm nhạc</b>
+          <small>Học đàn và khám phá giai điệu mới.</small>
+        </div>
+
+        <div class="hobby">
+          <span class="emoji">📸</span>
+          <b>Chụp ảnh</b>
+          <small>Lưu lại những khoảnh khắc đẹp.</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2 class="title">📸 Góc ảnh <span>đáng yêu</span></h2>
+
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=85" alt="Mèo">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=85" alt="Chó">
+      <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=85" alt="Mèo nhỏ">
+      <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=85" alt="Chó nhỏ">
+      <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=600&q=85" alt="Mèo nằm nghỉ">
+      <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=85" alt="Mèo dễ thương">
+    </div>
+  </section>
+
+  <section>
+    <div class="card pink quote">
+      <h3>💌 Một lời nhắn nhỏ</h3>
+      “Không cần trở thành một ai khác,<br>
+      hãy cứ là chính mình và tạo nên<br>
+      một thế giới thật rực rỡ nhé!” 🌈
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="title">💌 Góc <span>kết nối</span></h2>
+
+    <div class="card green">
+      <h3>Cảm ơn bạn đã ghé thăm! 🐾</h3>
+      <p>
+        Hy vọng bạn tìm thấy một chút niềm vui
+        trong thế giới nhỏ đầy màu sắc này.
+      </p>
+
+      <div class="contact-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">💙 Facebook</a>
+        <a href="#home">🏠 Về đầu trang</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div style="font-size:38px">🐱 ♡ 🐶</div>
+  Made with love by Lâm 💗<br>
+  Yellow 💛 Purple 💜 Blue 💙 Green 💚<br>
+  <small>© 2026 Lâm's Little World · Have a lovely day! ✨</small>
+</footer>
+
+<button class="paw-button" id="pawButton" aria-label="Tạo hiệu ứng">🐾</button>
+
+<script>
+document.getElementById('pawButton').addEventListener('click', function () {
+  const symbols = ['💛', '💜', '💙', '💚', '🐾', '✨', '💗'];
+
+  for (let i = 0; i < 16; i++) {
+    const item = document.createElement('span');
+    item.className = 'sparkle';
+    item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    item.style.left = Math.random() * window.innerWidth + 'px';
+    item.style.top = (window.innerHeight * (0.3 + Math.random() * 0.6)) + 'px';
+    item.style.fontSize = (18 + Math.random() * 20) + 'px';
+
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 1200);
+  }
+});
+</script>
+
+</body>
+</html>
