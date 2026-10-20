@@ -1,0 +1,440 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Little World 🐱</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --yellow: #fff0a8;
+  --purple: #e8d5ff;
+  --blue: #c9efff;
+  --green: #d8ffc9;
+  --pink: #ffd9ee;
+  --ink: #39366f;
+  --white: #fffdf8;
+}
+
+* { box-sizing: border-box; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 10%, #fff0b5 0, transparent 25%),
+    radial-gradient(circle at 90% 30%, #eadbff 0, transparent 25%),
+    #fffdf8;
+}
+
+a { color: inherit; text-decoration: none; }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px 7%;
+  background: #ffffffdf;
+  backdrop-filter: blur(15px);
+  border-bottom: 2px solid #e8ddff;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: 900;
+  color: #6653cf;
+  white-space: nowrap;
+}
+
+nav { display: flex; gap: 20px; flex-wrap: wrap; }
+nav a { font-weight: 800; transition: .25s; }
+nav a:hover { color: #ef75b6; transform: translateY(-2px); }
+
+.hero {
+  margin: 28px auto;
+  width: 90%;
+  max-width: 1200px;
+  min-height: 350px;
+  padding: 35px;
+  border-radius: 35px;
+  background: linear-gradient(125deg, #fff0a8, #d7f4ff, #e9d9ff, #d8ffc9);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero::before, .hero::after {
+  content: "✦  ♡  ✿  ✧";
+  position: absolute;
+  font-size: 30px;
+  color: #ffffffb8;
+  animation: float 4s ease-in-out infinite;
+}
+.hero::before { top: 20px; right: 30px; }
+.hero::after { bottom: 20px; left: 25px; }
+
+.hero-text { max-width: 550px; position: relative; z-index: 1; }
+
+.hello {
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.1;
+  margin: 0 0 15px;
+  font-weight: 900;
+  color: #6250cb;
+}
+
+.hello span {
+  background: linear-gradient(90deg, #ff75b8, #ffbf54, #56b9ec, #8b70e9);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p { font-size: 18px; line-height: 1.8; }
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  margin-top: 10px;
+  border-radius: 30px;
+  background: #fff;
+  color: #6551c9;
+  font-weight: 900;
+  box-shadow: 0 5px 0 #d6c5ff;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 9px 0 #d6c5ff; }
+
+.hero-pets {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-pets img {
+  width: 185px;
+  height: 220px;
+  object-fit: cover;
+  border: 7px solid white;
+  border-radius: 48% 48% 35% 35%;
+  box-shadow: 0 10px 25px #8c7ac52b;
+  transition: .4s;
+}
+.hero-pets img:nth-child(2) { transform: translateY(25px) rotate(5deg); }
+.hero-pets img:nth-child(1) { transform: rotate(-5deg); }
+.hero-pets img:hover { transform: rotate(0) scale(1.07); }
+
+section {
+  width: 90%;
+  max-width: 1200px;
+  margin: 35px auto;
+  scroll-margin-top: 90px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
+  margin-bottom: 22px;
+}
+.section-title span { color: #ed79b6; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  padding: 25px;
+  border-radius: 28px;
+  border: 2px solid white;
+  box-shadow: 0 7px 25px #7367a515;
+  transition: .3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+.yellow { background: linear-gradient(140deg, #fff5be, #fffdf0); }
+.purple { background: linear-gradient(140deg, #eee0ff, #fff8ff); }
+.blue { background: linear-gradient(140deg, #d9f5ff, #f5fcff); }
+.green { background: linear-gradient(140deg, #e0ffd5, #f8fff4); }
+.pink { background: linear-gradient(140deg, #ffe0f0, #fff7fc); }
+
+.card h3 { font-size: 23px; margin: 0 0 12px; }
+.card p { line-height: 1.8; margin: 8px 0; }
+
+.about-row {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.avatar {
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid white;
+  box-shadow: 0 0 0 3px #e9cfff;
+}
+
+.hobbies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.hobby {
+  background: #ffffffb8;
+  border-radius: 20px;
+  padding: 17px 10px;
+  text-align: center;
+  transition: .3s;
+  border: 2px solid white;
+}
+.hobby:hover { transform: translateY(-6px) rotate(-1deg); }
+.hobby .emoji { font-size: 35px; display: block; margin-bottom: 6px; }
+.hobby b { display: block; }
+.hobby small { display: block; margin-top: 5px; line-height: 1.5; }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+}
+.gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border: 5px solid white;
+  border-radius: 25px;
+  box-shadow: 0 5px 18px #8273a51c;
+  transition: .3s;
+}
+.gallery img:hover { transform: scale(1.035) rotate(1deg); }
+
+.quote {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.8;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+}
+.contact-links a {
+  padding: 10px 17px;
+  border-radius: 20px;
+  background: white;
+  font-weight: 800;
+}
+.contact-links a:hover { background: var(--yellow); }
+
+footer {
+  text-align: center;
+  margin-top: 45px;
+  padding: 40px 15px;
+  background: linear-gradient(100deg, #fff0a8, #d8ffc9, #d9f2ff, #ead9ff);
+  font-weight: 800;
+  line-height: 1.9;
+}
+
+.paw {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  border: 0;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 25px;
+  background: white;
+  box-shadow: 0 4px 15px #00000017;
+  cursor: pointer;
+}
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99;
+  animation: sparkleUp 1s forwards;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes sparkleUp {
+  to { transform: translateY(-35px) rotate(35deg); opacity: 0; }
+}
+
+@media (max-width: 760px) {
+  header { flex-direction: column; padding: 13px; }
+  nav { justify-content: center; gap: 12px; font-size: 13px; }
+  .hero { flex-direction: column; text-align: center; padding: 28px 18px; }
+  .hero-pets img { width: 125px; height: 155px; }
+  .grid { grid-template-columns: 1fr; }
+  .about-row { flex-direction: column; text-align: center; }
+  .hobbies { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .gallery img { height: 160px; }
+  .section-title { font-size: 25px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="#home" class="logo">🐱 My Little World ♡</a>
+  <nav>
+    <a href="#home">🏠 Trang chủ</a>
+    <a href="#about">Giới thiệu</a>
+    <a href="#hobbies">Sở thích</a>
+    <a href="#gallery">Hình ảnh</a>
+    <a href="#contact">Liên hệ</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="hero-text">
+      <h1 class="hello">Xin <span>chào!</span> ✨</h1>
+      <p>
+        Chào mừng đến với thế giới nhỏ của mình! 🌷<br>
+        Một chút màu sắc, một chút đáng yêu và thật nhiều điều thú vị.
+      </p>
+      <a class="btn" href="#about">Khám phá về mình ♡</a>
+    </div>
+    <div class="hero-pets">
+      <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=500&q=85" alt="Một chú mèo đáng yêu">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=85" alt="Một chú chó dễ thương">
+    </div>
+  </div>
+
+  <section id="about">
+    <h2 class="section-title">🌷 About <span>me</span> 🌷</h2>
+    <div class="grid">
+      <div class="card purple">
+        <div class="about-row">
+          <img class="avatar" src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=400&q=85" alt="Ảnh mèo đại diện">
+          <div>
+            <h3>Đôi chút về mình 💜</h3>
+            <p>🌼 Tên: <b>Điền tên của bạn</b></p>
+            <p>🎂 Ngày sinh: <b>Điền ngày sinh</b></p>
+            <p>🏫 Trường: <b>Điền tên trường</b></p>
+            <p>💌 Châm ngôn: cứ là chính mình!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card yellow">
+        <h3>🌟 Những điều nhỏ xinh</h3>
+        <p>🐱 Mê mèo và những bé cún siêu đáng yêu.</p>
+        <p>🎧 Thích nghe nhạc và khám phá những điều mới.</p>
+        <p>🎨 Yêu màu sắc, ảnh đẹp và những thứ sáng tạo.</p>
+        <p>☁️ Luôn muốn mỗi ngày có một điều vui vẻ.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hobbies">
+    <h2 class="section-title">🎀 Sở thích của mình 🎀</h2>
+    <div class="card blue">
+      <div class="hobbies">
+        <div class="hobby"><span class="emoji">🎧</span><b>Nghe nhạc</b><small>Giai điệu yêu thích</small></div>
+        <div class="hobby"><span class="emoji">🎮</span><b>Chơi game</b><small>Game cùng bạn bè</small></div>
+        <div class="hobby"><span class="emoji">🐱</span><b>Mèo con</b><small>Meow meow ♡</small></div>
+        <div class="hobby"><span class="emoji">🐶</span><b>Cún con</b><small>Gâu gâu ♡</small></div>
+        <div class="hobby"><span class="emoji">📸</span><b>Chụp ảnh</b><small>Lưu giữ kỷ niệm</small></div>
+        <div class="hobby"><span class="emoji">🎹</span><b>Âm nhạc</b><small>Học thêm điều mới</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2 class="section-title">📸 Góc ảnh <span>đáng yêu</span></h2>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=85" alt="Mèo dễ thương">
+      <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=600&q=85" alt="Chó dễ thương">
+      <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=600&q=85" alt="Mèo nhỏ">
+      <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=600&q=85" alt="Chú chó nhỏ">
+      <img src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=600&q=85" alt="Chú mèo nằm nghỉ">
+      <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=600&q=85" alt="Chú mèo tạo dáng">
+    </div>
+  </section>
+
+  <section>
+    <div class="card pink quote">
+      <h3>💌 Một lời nhắn nhỏ</h3>
+      “Hãy tận hưởng những điều giản dị,<br>
+      trân trọng những người mình yêu quý<br>
+      và luôn giữ lại một chút phép màu cho riêng mình.” ✨
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">💌 Kết nối với mình</h2>
+    <div class="card green">
+      <p>Rất vui vì bạn đã ghé thăm góc nhỏ này! ♡</p>
+      <p>Thêm đường dẫn mạng xã hội của bạn vào đây nhé.</p>
+      <div class="contact-links">
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">📷 Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">💙 Facebook</a>
+        <a href="mailto:hello@example.com">✉️ Email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div style="font-size:35px">🐱 ♡ 🐶</div>
+  Cảm ơn bạn đã ghé thăm! 🌈<br>
+  Made with love, colors & little paws ✨<br>
+  <small>© My Little World</small>
+</footer>
+
+<button class="paw" id="pawButton" aria-label="Tạo hiệu ứng đáng yêu">🐾</button>
+
+<script>
+document.getElementById('pawButton').addEventListener('click', function() {
+  const icons = ['💛', '💜', '💙', '💚', '🐾', '✨', '♡'];
+  for (let i = 0; i < 12; i++) {
+    const item = document.createElement('span');
+    item.className = 'sparkle';
+    item.textContent = icons[Math.floor(Math.random() * icons.length)];
+    item.style.left = Math.random() * window.innerWidth + 'px';
+    item.style.top = (window.innerHeight * (0.3 + Math.random() * 0.6)) + 'px';
+    item.style.fontSize = (18 + Math.random() * 18) + 'px';
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 1100);
+  }
+});
+</script>
+
+</body>
+</html>
